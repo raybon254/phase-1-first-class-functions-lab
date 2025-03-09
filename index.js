@@ -1,30 +1,30 @@
-// Code your solution in this file!
-const drivers = ['Antonia', 'Nuru', 'Amari', 'Mo']
-
-const returnFirstTwoDrivers = (drivers) =>  drivers.splice(0,2);
-console.log(returnFirstTwoDrivers(drivers))
-
-const returnLastTwoDrivers = (drivers) => drivers.splice(2,2);
-console.log(returnLastTwoDrivers(drivers))
-
-const selectingDrivers = [ returnFirstTwoDrivers, returnLastTwoDrivers ];
-
-
-function createFareMultiplier(multiplier){
-    return function (fare){
-       return multiplier*fare;
+// 1. returnFirstTwoDrivers()
+function returnFirstTwoDrivers(drivers) {
+    return drivers.slice(0, 2); // Non-destructive way to get the first two drivers
+  }
+  
+  // 2. returnLastTwoDrivers()
+  function returnLastTwoDrivers(drivers) {
+    return drivers.slice(-2); // Non-destructive way to get the last two drivers
+  }
+  
+  // 3. selectingDrivers
+  const selectingDrivers = [returnFirstTwoDrivers, returnLastTwoDrivers];
+  
+  // 4. createFareMultiplier()
+  function createFareMultiplier(multiplier) {
+    return function (fare) {
+      return fare * multiplier;
     };
-function fareDoubler(fare){
-    return fare * 2;
-}
-function fareTripler(fare){
-    return fare * 3;
-}
-
-function selectDifferentDrivers(arrayOfDrivers, test){
-        console.log(arrayOfDrivers);
-        console.log(test)
-}
-function selectDifferentDrivers(drivers_names, drivers){
-    return drivers(drivers_names);
-    }}
+  }
+  
+  // 5. fareDoubler()
+  const fareDoubler = createFareMultiplier(2);
+  
+  // 6. fareTripler()
+  const fareTripler = createFareMultiplier(3);
+  
+  // 7. selectDifferentDrivers()
+  function selectDifferentDrivers(drivers, driverSelector) {
+    return driverSelector(drivers); // Use the provided function to select drivers
+  }
